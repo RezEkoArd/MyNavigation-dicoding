@@ -32,11 +32,21 @@ class CategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // cara kirim data menggunakan bundle
+//        binding.btnCategoryLifestyle.setOnClickListener { view ->
+//            val mBundle = Bundle()
+//            mBundle.putString(EXTRA_NAME, "LifeStyle")
+//            mBundle.putLong(EXTRA_STOCK, 7)
+//            view.findNavController().navigate(R.id.action_categoryFragment_to_detailCategoryFragment, mBundle) }
+
+
+        // cara kirim data menggunakan safeArgs
         binding.btnCategoryLifestyle.setOnClickListener { view ->
-            val mBundle = Bundle()
-            mBundle.putString(EXTRA_NAME, "LifeStyle")
-            mBundle.putLong(EXTRA_STOCK, 7)
-            view.findNavController().navigate(R.id.action_categoryFragment_to_detailCategoryFragment, mBundle) }
+            val toDetailCategoryFragment = CategoryFragmentDirections.actionCategoryFragmentToDetailCategoryFragment()
+            toDetailCategoryFragment.name = "Lifestyle"
+            toDetailCategoryFragment.stock = 7
+            view.findNavController().navigate(toDetailCategoryFragment)
+        }
     }
 
     override fun onDestroy() {
